@@ -44,12 +44,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future<Album> fAlbum;
+  Future<Album> futureAlbum;
 
   @override
   void initState(){
     super.initState();
-    fAlbum=fetchAlbum();
+    futureAlbum=fetchAlbum();
   }
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
       ),
       body: Center(
         child: FutureBuilder<Album>(
-          future: fAlbum,
+          future: futureAlbum,
           builder: (context, snapshot){
             if(snapshot.hasData){
               return Text(snapshot.data.title);
