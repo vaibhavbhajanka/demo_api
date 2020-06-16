@@ -56,6 +56,20 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         title: Text('Fetch data'),
       ),
+      body: Center(
+        child: FutureBuilder<Album>(
+          future: futureAlbum,
+          builder: (context, snapshot){
+            if(snapshot.hasData){
+              return Text(snapshot.data.title);
+            }
+            else if(snapshot.hasError){
+              return Text("${snapshot.error}");
+            }
+            return CircularProgressIndicator();
+          },
+        )
+      ),
     );
   }
 }
